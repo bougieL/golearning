@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  golang:
+    container_name: golearning_golang
+    image: golang:gin
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
+    volumes:
+      - ../:/go/src/golearning/
+    command: bash -c ("cd /go/src/golearning/ && gin -p 8080 run main.go")
+    networks: 
+      - app_net
+  mysql:
+    hostname: golearning_mysql
+    container_name: golearning_mysql
+    image: mysql:5.5
+    ports:
+      - 0.0.0.0:3306:3306
+    volumes:
+      - ../:/golearning/
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - app_net
+
+networks:
+  app_net:
