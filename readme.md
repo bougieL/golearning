@@ -33,6 +33,6 @@ Build the project, the output file is at `./build/golearning`
 Build the app and than run it!
 
 ### config
-* [http://localhost:8081](http://localhost:8081) swagger
-* [http://localhost:8080](http://localhost:8080) go service
-* [http://localhost:3306](http://localhost:3306) mysql
+* [http://localhost:8001](http://localhost:8001) go service
+* [http://localhost:8002](http://localhost:8002) swagger
+* [http://localhost:3307](http://localhost:3307) mysql

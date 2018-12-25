@@ -9,22 +9,22 @@ info:
   # license:
   #   name: "Apache 2.0"
   #   url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "localhost:8080"
+host: "localhost:8001"
 basePath: "/api"
 tags:
-- name: "users"
-  description: "Users APIs"
+- name: "user"
+  description: "User APIs"
 schemes:
 # - "https"
 - "http"
 paths:
-  /users/all:
+  /user/all:
     get:
       tags:
-      - "users"
+      - "user"
       summary: ""
       description: ""
-      operationId: "getAllUsers"
+      operationId: "getAllUser"
       produces:
       - "application/json"
       responses:

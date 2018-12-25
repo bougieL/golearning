@@ -3,6 +3,7 @@ package models
 import (
 	"fmt"
 	"log"
+	"os"
 	"time"
 
 	"github.com/jinzhu/gorm"
@@ -21,7 +22,12 @@ type Model struct {
 
 // Setup Models
 func Setup() {
-	connection, err := gorm.Open("mysql", "root:root@tcp(golearning_mysql:3306)/golearning?charset=utf8&parseTime=True&loc=Local")
+	connection, err := gorm.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
+		os.Getenv("MYSQL_USERNAME"),
+		os.Getenv("MYSQL_PASSWORD"),
+		os.Getenv("MYSQL_HOSTNAME"),
+		os.Getenv("MYSQL_PORT"),
+		os.Getenv("MYSQL_DATABASE")))
 	if err != nil {
 		log.Fatalf("models.Setup err: %v", err)
 	} else {

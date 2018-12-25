@@ -14,3 +14,8 @@ func GetAllUsers(c *gin.Context) {
 	}
 	c.JSON(200, users)
 }
+
+// GetUserById func
+// func GetUserById(c *gin.Context) {
+
+// }

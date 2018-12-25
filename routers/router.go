@@ -9,7 +9,7 @@ import (
 func InitRouters() {
 	r := gin.Default()
 	r.Use(cors.Default())
-	apiUsers := r.Group("/api/users")
+	apiUsers := r.Group("/api/user")
 	apiUsers.GET("/all", GetAllUsers)
 	r.Run()
 }

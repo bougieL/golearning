@@ -6,12 +6,18 @@ services:
     container_name: golearning_golang
     image: golang:golearning
     ports:
-      - 8080:8080
+      - 8001:8080
     depends_on:
       - mysql
     volumes:
       - ../:/go/src/golearning/
     command: bash -c ("cd /go/src/golearning/ && gin -p 8080 run main.go")
+    environment: 
+      - MYSQL_HOSTNAME=golearning_mysql
+      - MYSQL_DATABASE=golearning
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_PORT=3306
     networks:
       - golearning_net
   mysql:
@@ -19,7 +25,7 @@ services:
     container_name: golearning_mysql
     image: mysql:5.5
     ports:
-      - 0.0.0.0:3306:3306
+      - 3307:3306
     volumes:
       - ../docs/mysql/:/docker-entrypoint-initdb.d/
     environment:
@@ -31,7 +37,7 @@ services:
     container_name: golearning_swagger-ui
     image: swaggerapi/swagger-ui
     ports:
-      - 0.0.0.0:8081:8080
+      - 8002:8080
     volumes:
       - ../docs/swagger/:/app/
     networks:
