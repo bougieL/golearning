@@ -11,11 +11,18 @@ services:
     command: bash -c ("cd /go/src/golearning && go build -o ./dist/golearning ./main.go && ./dist/golearning")
     # environment:
   mysql:
+    hostname: golearning_mysql
     container_name: golearning_mysql
     image: mysql:5.5
     ports:
       - 0.0.0.0:3306:3306
     volumes:
-      - ./:/golearning/
+      - ../docs/mysql/:/docker-entrypoint-initdb.d/
     environment:
       - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=golearning
+    networks:
+      - golearning_net
+
+networks:
+  golearning_net:

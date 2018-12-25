@@ -1,0 +1,35 @@
+swagger: "2.0"
+info:
+  description: "This is description."
+  version: "1.0.0"
+  title: "Go learning APIs"
+  # termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "liuqi17@xiaomi.com"
+  # license:
+  #   name: "Apache 2.0"
+  #   url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:8080"
+basePath: "/api"
+tags:
+- name: "users"
+  description: "Users APIs"
+schemes:
+# - "https"
+- "http"
+paths:
+  /users/all:
+    get:
+      tags:
+      - "users"
+      summary: ""
+      description: ""
+      operationId: "getAllUsers"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: ""
+          shecma:
+            type: "array"
+    

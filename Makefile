@@ -5,7 +5,11 @@ image:
 dev:
 	docker-compose -f ./build/docker-compose.dev.yml up
 
-vendor:
+stop:
+	docker-compose -f ./build/docker-compose.dev.yml stop
+	docker-compose -f ./build/docker-compose.prod.yml stop
+
+vendors:
 	go mod vendor
 	go mod tidy
 
@@ -13,4 +17,7 @@ build:
 	docker build -o ./dist/golearning ./main.go
 
 release:
-	docker-compose -f ./build/docker-compose.prod.yml
+	docker-compose -f ./build/docker-compose.prod.yml -d
+
+# 导出数据
+dump:
