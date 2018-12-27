@@ -18,6 +18,7 @@ type Model struct {
 	ID         int `gorm:"id" json:"id"`
 	CreatedAt  int `gorm:"created_at" json:"createdAt"`
 	ModifiedAt int `gorm:"modified_at" json:"modifiedAt"`
+	DeletedAt  int `gorm:"deleted_at" json:"deletedAt"`
 }
 
 // Setup Models

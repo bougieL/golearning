@@ -28,6 +28,7 @@ services:
       - 3307:3306
     volumes:
       - ../docs/mysql/:/docker-entrypoint-initdb.d/
+      - ../docs/mysqldump/:/mysqldump/
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=golearning

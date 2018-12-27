@@ -19,5 +19,7 @@ build:
 release:
 	docker-compose -f ./build/docker-compose.prod.yml -d
 
-# 导出数据
+# export data from container
 dump:
+	# make sure the golearning_mysql is running
+	docker exec golearning_mysql sh -c 'mysqldump -uroot -p$$MYSQL_ROOT_PASSWORD $$MYSQL_DATABASE > /mysqldump/$$MYSQL_DATABASE.sql'

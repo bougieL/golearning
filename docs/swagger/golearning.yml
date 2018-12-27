@@ -32,4 +32,63 @@ paths:
           description: ""
           shecma:
             type: "array"
-    
+  /user:
+    get:
+      tags:
+      - "user"
+      summary: ""
+      description: ""
+      operationId: "getUserById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+      responses:
+        200:
+          description: ""
+          shecma:
+            type: "object"
+    post:
+      tags:
+      - "user"
+      summary: ""
+      description: ""
+      operationId: "postUser"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "formData"
+      - name: "password"
+        in: "formData"
+    put:
+      tags:
+      - "user"
+      summary: ""
+      description: ""
+      operationId: "putUser"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+      - name: "username"
+        in: "formData"
+      - name: "password"
+        in: "formData"
+    delete:
+      tags:
+      - "user"
+      summary: ""
+      description: ""
+      operationId: "deleteUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
