@@ -5,23 +5,21 @@ A restful api example which Integrate gin, mysql and gorm, based on go.
 You can run this app just with a docker environment.
 
 ## Installation
-Get docker first: [https://www.docker.com](https://www.docker.com). And make sure the golang environment has been correctly installed.
+Get docker first: [https://www.docker.com](https://www.docker.com).
 
 ```bash
 git clone https://github.com/bougieL/golearning.git
 cd golearning
-make image
-make vendors
 make dev
 ```
 
 ## API Documentation
 ### scripts
-#### `make image`
+<!-- #### `make image`
 Build base image, just excute it at the first time.
 
 #### `make vendors`
-Get the project Dependencies from internet.
+Get the project Dependencies from internet. -->
 
 #### `make dev`
 Run the app at development mode, this mode run with livereload function.

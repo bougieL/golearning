@@ -11,8 +11,12 @@ services:
       - mysql
     volumes:
       - ../:/go/src/golearning/
-    command: bash -c ("cd /go/src/golearning/ && gin -p 8080 run main.go")
-    environment: 
+    working_dir: /go/src/golearning/
+    command: sh ./build/start.sh
+    build:
+      context: ../dockerfile
+      dockerfile: golang.dockerfile
+    environment:
       - MYSQL_HOSTNAME=golearning_mysql
       - MYSQL_DATABASE=golearning
       - MYSQL_USERNAME=root

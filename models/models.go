@@ -82,8 +82,8 @@ func deleteCallback(scope *gorm.Scope) {
 		if str, ok := scope.Get("gorm:delete_option"); ok {
 			extraOption = fmt.Sprint(str)
 		}
-		deletedOnField, hasDeletedOnField := scope.FieldByName("DeletedOn")
-		if !scope.Search.Unscoped && hasDeletedOnField {
+		deletedOnField, hasDeletedAtField := scope.FieldByName("DeletedAt")
+		if !scope.Search.Unscoped && hasDeletedAtField {
 			scope.Raw(fmt.Sprintf(
 				"UPDATE %v SET %v=%v%v%v",
 				scope.QuotedTableName(),

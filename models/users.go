@@ -1,16 +1,16 @@
 package models
 
-// Users struct
+// Users struct stdin
 type Users struct {
 	Model
-	Username string `json:"username" form:"username" binding:"required,min=4,max=255"`
-	Password string `json:"password" form:"password" binding:"required,min=4,max=255"`
+	Username string `gorm:"username" json:"username" form:"username" binding:"required,min=4,max=255"`
+	Password string `gorm:"password" json:"password" form:"password" binding:"required,min=4,max=255"`
 }
 
 // GetAllUsers services
 func GetAllUsers() ([]*Users, error) {
 	var users []*Users
-	if err := db.Select("id, username, password").Find(&users).Error; err != nil {
+	if err := db.Find(&users).Error; err != nil {
 		return nil, err
 	}
 	return users, nil
@@ -19,7 +19,7 @@ func GetAllUsers() ([]*Users, error) {
 // GetUserById
 func GetUserById(id int) (*Users, error) {
 	var user Users
-	if err := db.Select("id, username, password").Where("id = ?", id).First(&user).Error; err != nil {
+	if err := db.Where("id = ?", id).First(&user).Error; err != nil {
 		return nil, err
 	}
 	return &user, nil
