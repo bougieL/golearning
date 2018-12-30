@@ -38,7 +38,7 @@ paths:
       - "user"
       summary: ""
       description: ""
-      operationId: "getUserById"
+      operationId: "getUserByID"
       produces:
       - "application/json"
       parameters:

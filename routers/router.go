@@ -16,11 +16,11 @@ func InitRouters() {
 	})
 	apiUsers := r.Group("/api/user")
 	{
-		apiUsers.GET("", GetUserById)
+		apiUsers.GET("", GetUserByID)
 		apiUsers.GET("/all", GetAllUsers)
 		apiUsers.POST("", PostUser)
-		apiUsers.PUT("", PutUserById)
-		apiUsers.DELETE("", DeleteUserById)
+		apiUsers.PUT("", PutUserByID)
+		apiUsers.DELETE("", DeleteUserByID)
 	}
 	r.Run()
 }

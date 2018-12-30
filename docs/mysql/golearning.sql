@@ -1,26 +1,27 @@
-/*
- Navicat Premium Data Transfer
+-- MySQL dump 10.13  Distrib 5.5.62, for linux-glibc2.12 (x86_64)
+--
+-- Host: localhost    Database: golearning
+-- ------------------------------------------------------
+-- Server version	5.5.62
 
- Source Server         : go_learning
- Source Server Type    : MySQL
- Source Server Version : 50562
- Source Host           : localhost:3306
- Source Schema         : golearning
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MySQL
- Target Server Version : 50562
- File Encoding         : 65001
+--
+-- Table structure for table `images`
+--
 
- Date: 24/12/2018 21:06:48
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for images
--- ----------------------------
 DROP TABLE IF EXISTS `images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `images` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -29,18 +30,52 @@ CREATE TABLE `images` (
   `modified_at` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for users
--- ----------------------------
+--
+-- Dumping data for table `images`
+--
+
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
 DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_at` bigint(20) DEFAULT NULL,
   `modified_at` bigint(20) DEFAULT NULL,
+  `deleted_at` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Bougie','Bougie',1234567,1234568,NULL),(2,'Liuqi','Liuqi',1234567,1234568,NULL),(3,'rer','rerre',1545828987,1545828987,1546048434),(4,'rer43443','rerre',1545829196,1545829196,NULL),(5,'123','123',1545829308,1545829308,1546048437),(6,'123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123','123',1545829864,1545829864,NULL),(7,'23123','32321312',1545831953,1545901685,NULL),(8,'','545454',1545831988,1545831988,1546048369),(9,'','545454',1545832168,1545832168,1546048387),(10,'','545454',1545832259,1545832259,1546048391),(11,'','545454',1545832436,1545832436,1546048393),(12,'','545454',1545832487,1545832487,1546048397),(13,'','3213',1545832651,1545832651,1546048407),(14,'','',1545874022,1545874022,1546048412),(15,'1','1',1545880414,1545880414,1546048417),(16,'12345','12345',1545880556,1545880556,NULL),(17,'12345','12345',1545880610,1545880610,NULL),(18,'12345','12345',1545881291,1545881291,1546048326),(19,'1234566','1234566',1545881305,1545881305,NULL),(21,'yangyifan','yangyifan',1545983305,1545983305,NULL);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-12-29  7:43:42

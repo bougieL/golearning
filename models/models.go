@@ -1,6 +1,7 @@
 package models
 
 import (
+	"database/sql"
 	"fmt"
 	"log"
 	"os"
@@ -15,10 +16,10 @@ var db *gorm.DB
 
 // Model sturct, 设置公共基础字段
 type Model struct {
-	ID         int `gorm:"id" json:"id"`
-	CreatedAt  int `gorm:"created_at" json:"createdAt"`
-	ModifiedAt int `gorm:"modified_at" json:"modifiedAt"`
-	DeletedAt  int `gorm:"deleted_at" json:"deletedAt"`
+	ID        int           `gorm:"auto_increment;primary_key" json:"id"`
+	CreatedAt sql.NullInt64 `gorm:"" json:"-"`
+	UpdatedAt sql.NullInt64 `gorm:"" json:"-"`
+	DeletedAt sql.NullInt64 `gorm:"" json:"-"`
 }
 
 // Setup Models
@@ -52,7 +53,7 @@ func CloseDB() {
 	defer db.Close()
 }
 
-// updateTimeStampForCreateCallback will set `CreatedAt`, `ModifiedAt` when creating
+// updateTimeStampForCreateCallback will set `CreatedAt`, `UpdatedAt` when creating
 func updateTimeStampForCreateCallback(scope *gorm.Scope) {
 	if !scope.HasError() {
 		nowTime := time.Now().Unix()
@@ -61,18 +62,18 @@ func updateTimeStampForCreateCallback(scope *gorm.Scope) {
 				createTimeField.Set(nowTime)
 			}
 		}
-		if modifyTimeField, ok := scope.FieldByName("ModifiedAt"); ok {
-			if modifyTimeField.IsBlank {
-				modifyTimeField.Set(nowTime)
+		if updateTimeField, ok := scope.FieldByName("UpdatedAt"); ok {
+			if updateTimeField.IsBlank {
+				updateTimeField.Set(nowTime)
 			}
 		}
 	}
 }
 
-// updateTimeStampForUpdateCallback will set `ModifiedAt` when updating
+// updateTimeStampForUpdateCallback will set `UpdatedAt` when updating
 func updateTimeStampForUpdateCallback(scope *gorm.Scope) {
 	if _, ok := scope.Get("gorm:update_column"); !ok {
-		scope.SetColumn("ModifiedAt", time.Now().Unix())
+		scope.SetColumn("UpdatedAt", time.Now().Unix())
 	}
 }
 
