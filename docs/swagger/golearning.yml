@@ -14,6 +14,8 @@ basePath: "/api"
 tags:
 - name: "user"
   description: "User APIs"
+- name: "file"
+  description: "File APIs"
 schemes:
 # - "https"
 - "http"
@@ -92,3 +94,31 @@ paths:
       parameters:
       - name: "id"
         in: "query"
+  /upload/file:
+    post:
+      tags:
+      - file
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: userId
+        in: query
+      - name: file
+        in: formData
+        type: file
+        allowMultiple: True
+  /file/uploadfiles:
+    post:
+      tags:
+      - file
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: files
+        in: formData
+        description: Upload multiple files
+        required: true
+        type: array
+        items:
+          type: file
+        collectionFormat: multi

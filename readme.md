@@ -30,7 +30,7 @@ Build the project, the output file is at `./build/golearning`
 #### `make release`
 Build the app and than run it!
 
-### config
+### Address
 * [http://localhost:8001](http://localhost:8001) go service
 * [http://localhost:8002](http://localhost:8002) swagger
 * [http://localhost:3307](http://localhost:3307) mysql

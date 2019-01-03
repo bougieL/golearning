@@ -18,11 +18,11 @@ func GetAllUsers() ([]*Users, error) {
 
 // GetUserByID Model
 func GetUserByID(id int) (*Users, error) {
-	var user Users
+	var user *Users
 	if err := db.Where("id = ?", id).First(&user).Error; err != nil {
 		return nil, err
 	}
-	return &user, nil
+	return user, nil
 }
 
 // ExistUserByID Model

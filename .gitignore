@@ -1,3 +1,5 @@
 /gin-bin
 /vendor
 /dist
+/upload/*
+!.gitkeep

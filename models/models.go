@@ -23,7 +23,7 @@ type Model struct {
 }
 
 // Setup Models
-func Setup() {
+func init() {
 	connection, err := gorm.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
 		os.Getenv("MYSQL_USERNAME"),
 		os.Getenv("MYSQL_PASSWORD"),

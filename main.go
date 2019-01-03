@@ -1,12 +1,12 @@
 package main
 
 import (
-	"golearning/models"
+	_ "golearning/models"
 
-	"golearning/routers"
+	_ "golearning/routers"
 )
 
 func main() {
-	models.Setup()
-	routers.InitRouters()
+	// models.Setup()
+	// routers.InitRouters()
 }
