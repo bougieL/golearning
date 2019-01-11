@@ -3,7 +3,7 @@ package models
 // Users struct stdin
 type Users struct {
 	Model
-	Username string `gorm:"unique" json:"username" form:"username" binding:"required,min=4,max=255"`
+	Username string `gorm:"" json:"username" form:"username" binding:"required,min=4,max=255"`
 	Password string `gorm:"" json:"-" form:"password" binding:"required,min=4,max=255"`
 }
 
@@ -17,10 +17,10 @@ func GetAllUsers() ([]*Users, error) {
 }
 
 // GetUserByID Model
-func GetUserByID(id int) (*Users, error) {
-	var user *Users
+func GetUserByID(id int) (Users, error) {
+	var user Users
 	if err := db.Where("id = ?", id).First(&user).Error; err != nil {
-		return nil, err
+		return user, err
 	}
 	return user, nil
 }
@@ -80,4 +80,13 @@ func DeleteUserByID(id int) error {
 		return err
 	}
 	return nil
+}
+
+// Login Model
+func ValidateUserLogin(user Users) (Users, error) {
+	var userData Users
+	if err := db.Where("username = ? AND password = ?", user.Username, user.Password).First(&userData).Error; err != nil {
+		return userData, err
+	}
+	return userData, nil
 }

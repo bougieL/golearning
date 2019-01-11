@@ -16,7 +16,7 @@ var db *gorm.DB
 
 // Model sturct, 设置公共基础字段
 type Model struct {
-	ID        int           `gorm:"auto_increment;primary_key" json:"id"`
+	ID        int           `gorm:"" json:"id"`
 	CreatedAt sql.NullInt64 `gorm:"" json:"-"`
 	UpdatedAt sql.NullInt64 `gorm:"" json:"-"`
 	DeletedAt sql.NullInt64 `gorm:"" json:"-"`

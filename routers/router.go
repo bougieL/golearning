@@ -10,6 +10,11 @@ import (
 // InitRouters func
 func init() {
 	r := gin.Default()
+	// r.Use(cors.New(cors.Config{
+	// 	AllowAllOrigins:  true,
+	// 	AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
+	// 	AllowCredentials: true,
+	// }))
 	r.Use(cors.Default())
 	r.GET("", func(c *gin.Context) {
 		c.String(http.StatusOK, "Go service is running!")
@@ -25,7 +30,7 @@ func init() {
 		apiUsers.POST("", PostUser)
 		apiUsers.PUT("", PutUserByID)
 		apiUsers.DELETE("", DeleteUserByID)
+		apiUsers.POST("/login", Login)
 	}
-
 	r.Run()
 }

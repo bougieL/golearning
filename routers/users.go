@@ -9,24 +9,39 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Login func
+func Login(c *gin.Context) {
+	var user models.Users
+	if err := c.Bind(&user); err != nil {
+		c.AbortWithStatusJSON(u.Res(http.StatusBadRequest, user))
+		return
+	}
+	if userData, err := models.ValidateUserLogin(user); err != nil {
+		c.AbortWithStatusJSON(u.Res(http.StatusBadRequest, err, "Invalidate username or password"))
+	} else {
+		c.SetCookie("userid", strconv.Itoa(userData.ID), 100000000000, "/", "", true, true)
+		c.JSON(u.Res(http.StatusOK, userData))
+	}
+}
+
 // GetAllUsers func
 func GetAllUsers(c *gin.Context) {
-	users, err := models.GetAllUsers()
-	if err != nil {
-		panic(err)
+	if users, err := models.GetAllUsers(); err != nil {
+		c.AbortWithStatusJSON(u.Res(http.StatusInternalServerError, err))
+	} else {
+		c.JSON(u.Res(http.StatusOK, users))
 	}
-	c.JSON(u.Res(http.StatusOK, users))
 }
 
 // GetUserByID func
 func GetUserByID(c *gin.Context) {
 	id, _ := strconv.Atoi(c.DefaultQuery("id", "0"))
 	// exist, _ := models.ExistUserByID(id)
-	user, err := models.GetUserByID(id)
-	if err != nil {
+	if user, err := models.GetUserByID(id); err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
+	} else {
+		c.JSON(u.Res(http.StatusOK, user))
 	}
-	c.JSON(u.Res(http.StatusOK, user))
 }
 
 // PostUser func

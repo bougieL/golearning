@@ -34,6 +34,20 @@ paths:
           description: ""
           shecma:
             type: "array"
+  /user/login:
+    post:
+      tags:
+      - user
+      summary:
+      description:
+      operationId: loginValidate
+      produces:
+      - application/json
+      parameters:
+      - name: username
+        in: formData
+      - name: password
+        in: formData
   /user:
     get:
       tags:
