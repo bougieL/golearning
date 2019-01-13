@@ -4,17 +4,18 @@ import (
 	"net/http"
 
 	"github.com/gin-contrib/cors"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
+
+	"golearning/middleware"
 )
 
 // InitRouters func
 func init() {
 	r := gin.Default()
-	// r.Use(cors.New(cors.Config{
-	// 	AllowAllOrigins:  true,
-	// 	AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
-	// 	AllowCredentials: true,
-	// }))
+	store := cookie.NewStore([]byte("secret"))
+	r.Use(sessions.Sessions("SESSION_CORE", store))
 	r.Use(cors.Default())
 	r.GET("", func(c *gin.Context) {
 		c.String(http.StatusOK, "Go service is running!")
@@ -29,8 +30,9 @@ func init() {
 		apiUsers.GET("/all", GetAllUsers)
 		apiUsers.POST("", PostUser)
 		apiUsers.PUT("", PutUserByID)
-		apiUsers.DELETE("", DeleteUserByID)
+		apiUsers.DELETE("", middleware.Auth(), DeleteUserByID)
 		apiUsers.POST("/login", Login)
+		apiUsers.GET("/logout", Logout)
 	}
 	r.Run()
 }

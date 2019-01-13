@@ -23,6 +23,7 @@ services:
       - MYSQL_USERNAME=root
       - MYSQL_PASSWORD=root
       - MYSQL_PORT=3306
+      - ACCESS_TOKEN=golearning
     networks:
       - golearning_net
   mysql:
