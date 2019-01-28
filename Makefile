@@ -7,7 +7,7 @@ dev:
 
 stop:
 	docker-compose -f ./build/docker-compose.dev.yml stop
-	docker-compose -f ./build/docker-compose.prod.yml stop
+	docker-compose -f ./build/docker-compose.pro.yml stop
 
 vendors:
 	go mod vendor

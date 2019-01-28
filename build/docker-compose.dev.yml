@@ -11,6 +11,7 @@ services:
       - mysql
     volumes:
       - ../:/go/src/golearning/
+      - /var/run/docker.sock:/var/run/docker.sock
     working_dir: /go/src/golearning/
     # command: sh -c 'go mod vendor && go mod tidy && gin -p 8080 run ./main.go'
     command: gin -p 8080 run ./main.go

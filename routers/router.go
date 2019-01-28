@@ -34,5 +34,12 @@ func init() {
 		apiUsers.POST("/login", Login)
 		apiUsers.GET("/logout", Logout)
 	}
+	apiDocker := r.Group("/api/docker")
+	{
+		apiDocker.GET("/image/all", GetImages)
+		apiDocker.GET("/image", SearchImage)
+		apiDocker.GET("/container/all", GetContainers)
+		apiDocker.GET("/container", ExecCommand)
+	}
 	r.Run()
 }
