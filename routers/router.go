@@ -20,6 +20,7 @@ func init() {
 	r.GET("", func(c *gin.Context) {
 		c.String(http.StatusOK, "Go service is running!")
 	})
+	r.GET("/ping", Ping)
 	apiFile := r.Group("/api/upload")
 	{
 		apiFile.POST("/file", Uploadfile)
@@ -36,10 +37,12 @@ func init() {
 	}
 	apiDocker := r.Group("/api/docker")
 	{
-		apiDocker.GET("/image/all", GetImages)
-		apiDocker.GET("/image", SearchImage)
+		// apiDocker.GET("/image/all", GetImages)
+		// apiDocker.GET("/image", SearchImage)
 		apiDocker.GET("/container/all", GetContainers)
 		apiDocker.GET("/container", ExecCommand)
+		apiDocker.GET("/exec", ExecQuery)
+		// apiDocker.GET("/exec", Ping)
 	}
 	r.Run()
 }
